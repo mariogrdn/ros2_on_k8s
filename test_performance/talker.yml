@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: talker
+  name: talker
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: talker
+  template:
+    metadata:
+      labels:
+        name: talker
+    spec:
+      containers:
+        - name: talker
+          image: mariogrdn/talker:def
+          env:
+            - name: DISCOVERY_SERVER_NAME
+              value: server-service
+            - name: ROS_DOMAIN_ID
+              value: "42"

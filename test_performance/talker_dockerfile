@@ -1,0 +1,18 @@
+FROM ros:foxy
+
+RUN sudo apt-get update &&sudo apt-get install -y curl \
+&& curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add - \
+&& sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list' \
+&& sudo apt-get update
+
+RUN git clone https://github.com/ros2/demos.git \
+&& cd /demos/demo_nodes_cpp \
+&& rosdep update && rosdep install -y --from-path . --ignore-src \
+&& . /opt/ros/foxy/setup.sh \
+&& colcon build
+
+COPY talker_entrypoint.sh ./
+RUN chmod +x ./talker_entrypoint.sh
+COPY fastRTPS_profile_ds_talker.xml /
+
+ENTRYPOINT ./talker_entrypoint.sh

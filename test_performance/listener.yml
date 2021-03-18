@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: listener
+  name: listener
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: listener
+  template:
+    metadata:
+      labels:
+        name: listener
+    spec:
+      containers:
+        - name: listener
+          image: mariogrdn/listener:def
+          env:
+            - name: DISCOVERY_SERVER_NAME
+              value: server-service.default
+            - name: ROS_DOMAIN_ID
+              value: "42"
