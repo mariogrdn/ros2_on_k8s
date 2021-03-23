@@ -11,7 +11,7 @@ A running Kubernetes cluster.
 
 # How To Use
 
-In order to use this repository, all that is needed is to apply the YAML files into your Kubernetes cluster ("kubectl apply -f <yamlFileName>"). It is recommended, even though not strictly mandatory, to deploy the Discovery Server first and then, as soon as it is up and running (its state can be seen by means of "kubectl get pods". Adding the flag "--watch" will keep monitoring the state of the Pods in the default namespace), deploy the other in no particular order.
+In order to use this repository, all that is needed to do is to apply the YAML files into your Kubernetes cluster ("kubectl apply -f <yamlFileName>"). It is recommended, even though not strictly mandatory, to deploy the Discovery Server first and then, as soon as it is up and running (its state can be seen by means of "kubectl get pods". Adding the flag "--watch" will keep monitoring the state of the Pods in the default namespace), deploy the other in no particular order.
 
 # Results
 
