@@ -21,3 +21,19 @@ spec:
           image: "mariogrdn/discovery-server-df:def"
           name: server
       restartPolicy: Always
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  labels: 
+    name: server
+  name: server-service
+  namespace: default
+spec: 
+  ports: 
+    - name: discovery
+      port: 6000
+      protocol: UDP
+      targetPort: 6000
+  selector: 
+    name: server
