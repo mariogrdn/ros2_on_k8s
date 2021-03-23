@@ -3,7 +3,7 @@
 This repository contains the Dockerfiles, the YAML files and the Bash scripts necessary to deploy a simple ROS2 talker and listener system.
 All the Docker images are already available on Docker Hub, but if the necessity arises to build them anew, it is fundamental to change the value of the "image" field in each of the YAML configuration files to the name of the new images.
 The Bash scripts and the XML files are not meant to be used manually, since they are copied inside the respective Docker image and automatically used when the image starts running.
-Those scripts are set as entrypoints for the Docker images, and are responsible of properly configuring the FastDDS instance running under the hood of ROS2 in order to make it work using a Discovery Server, instead of its traditional multicast-based discovery mechanism. 
+Those scripts are set as entrypoints for the Docker images, and are responsible of properly configuring the FastDDS instance running under the hood of ROS2 in order to make it work using a Discovery Server (https://github.com/mariogrdn/Discovery-Server), instead of its traditional multicast-based discovery mechanism. 
 
 # Prerequisites
 
